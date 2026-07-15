@@ -1,17 +1,13 @@
 class Solution {
 public:
     bool hasDuplicate(vector<int>& nums) {
-        bool found = false;
         unordered_map<int,int> table;
         for(int num :nums){
-            if(table.contains(num)){
-                found = true;
+            if(table[num]>0){
                 return true;
             }
-            else{
-                table.insert({num,1});
-            }
+            table[num]+=1;
         }
-        return found;
+        return false;
     }
 };
